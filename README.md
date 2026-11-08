@@ -75,12 +75,12 @@ from predicted probabilities. MCC is the multi-class Matthews correlation.
 
 | ML Model Name | Observation about model performance |
 |---|---|
-| Logistic Regression | _TODO: write in your own words_ |
-| Decision Tree | _TODO_ |
-| KNN | _TODO_ |
-| Naive Bayes | _TODO_ |
-| Support Vector Machine | _TODO_ |
-| Overall winner for this dataset | _TODO_ |
+| Logistic Regression | Strong baseline and the best AUC (0.888), with accuracy (0.759) almost equal to SVM. Train accuracy (0.774) is close to test, so it generalises well and does not overfit. Once the features are scaled, the three outcomes are largely linearly separable, especially along the 1st/2nd-semester approved-units features. It finds Graduates well (recall 0.92) and Dropouts reasonably (0.76), but catches only 31% of Enrolled students. |
+| Decision Tree | Accuracy 0.737, F1 0.723, MCC 0.562. Limiting depth to 7 and leaf size to 10 keeps the train/test gap small (0.799 vs 0.737). It is the most interpretable model: `Curricular_units_2nd_sem_approved` alone carries 63% of the importance, followed by `Tuition_fees_up_to_date` (10%), so second-semester progress and fee payment are the strongest dropout signals. Axis-aligned splits are a coarser boundary than LR/SVM, which costs a few points. |
+| KNN | Accuracy 0.713, F1 0.689, MCC 0.522. With distance weighting it reaches 100% train accuracy, which shows it memorises the training set. In 36 dimensions, many of them integer-coded categories (course, occupation, nationality) where Euclidean distance has little meaning, neighbours become less informative. It is biased toward the majority Graduate class (recall 0.94) and has the weakest Dropout recall (0.62) of all models. |
+| Naive Bayes | Lowest on every metric (accuracy 0.672, F1 0.656, MCC 0.450). GaussianNB assumes features are independent and normally distributed. Neither holds here: 1st- and 2nd-semester approved units have a correlation of 0.90, so the same evidence is counted twice, and many features are categorical codes, not Gaussian. It is still fast and gives a useful AUC of 0.81, but it is the least suited to this data. |
+| Support Vector Machine | Best overall: accuracy 0.761, F1 0.744, precision 0.748 and MCC 0.603 are the highest, and AUC 0.887 is essentially tied with LR. The RBF kernel captures some non-linear interactions on top of the linear trend. It has the best recall for Graduates (0.95) and for the hard Enrolled class (0.35), but lower Dropout recall (0.70) than LR. Mild overfitting (train 0.825), and it is the slowest to train and to score. |
+| Overall winner for this dataset | **Support Vector Machine**, by a small margin over Logistic Regression (F1 0.744 vs 0.742, MCC 0.603 vs 0.599). Because the gap is so small, Logistic Regression is an equally sensible practical choice: it is faster, explainable through its coefficients, and has the best AUC and Dropout recall, which matter most for an early-warning system. All models struggle with the minority "Enrolled" class (recall 0.23 to 0.35), since those students sit between dropouts and graduates. Class weighting or resampling would be the next step to improve this. |
 
 ## Streamlit app
 
