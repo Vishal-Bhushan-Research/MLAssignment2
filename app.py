@@ -1,4 +1,5 @@
 """
+Author: Vishal Bhushan
 Student Outcome Predictor - Streamlit front end for ML Assignment 2.
 
 The app never trains anything. It loads the five pipelines saved by
