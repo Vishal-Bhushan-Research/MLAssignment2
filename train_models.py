@@ -5,7 +5,7 @@ train_models.py
 Trains five classifiers on the UCI "Predict Students' Dropout and Academic
 Success" dataset and saves everything the Streamlit app needs.
 
-Run once (on BITS Virtual Lab):   python train_models.py
+Usage:   python train_models.py
 
 Outputs
   model/<name>.joblib    one fitted sklearn Pipeline per classifier
