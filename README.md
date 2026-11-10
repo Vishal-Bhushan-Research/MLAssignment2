@@ -70,9 +70,6 @@ from predicted probabilities. MCC is the multi-class Matthews correlation.
 | Naive Bayes | 0.6723 | 0.8116 | 0.6520 | 0.6723 | 0.6559 | 0.4501 |
 | Support Vector Machine | 0.7605 | 0.8869 | 0.7483 | 0.7605 | 0.7442 | 0.6027 |
 
-> If you re-run `train_models.py` on a different scikit-learn version the
-> numbers can move slightly. Copy the table printed by the script.
-
 ### Observations
 
 | ML Model Name | Observation about model performance |
