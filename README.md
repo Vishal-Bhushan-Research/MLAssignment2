@@ -1,6 +1,6 @@
 # Student Outcome Predictor (ML Assignment 2)
 
-Live app: `<paste your Streamlit Cloud URL here>`
+Live app: https://mlassignment2-classification-models.streamlit.app
 GitHub repository: https://github.com/Vishal-Bhushan-Research/MLAssignment2
 
 ## a. Problem statement
